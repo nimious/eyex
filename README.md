@@ -1,2 +1,2 @@
 # io-tobii
-Nim bindings for Tobii eye tracking devices.
+Nim bindings for the Tobii eye tracking SDK.
