@@ -219,7 +219,7 @@ var # Interactor Literals
   txConnectionTokenLiteralList*: cstring = "LITERAL_LIST";
 
 
-type
+type # Framework types
   TxResult* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all result codes returned by the API functions
     unknown = txEnumStartValue, ## Unknown error, typically returned if something
@@ -236,13 +236,13 @@ type
       ## used
     invalidArgument, ## An invalid argument was passed to an API function. All
       ## arguments are checked before an API function actually does something.
-      ## There are many reasons why an argument can be considered invalid
-  Check the log for more details if this code is returned
+      ## There are many reasons why an argument can be considered invalid. Check
+      ## the log for more details if this code is returned
     invalidHandle, ## The handle for an interaction object is not valid
     notFound, ## Generic result code when something could not be found
     invalidBufferSize, ## Some buffer; string, array, etc. had an invalid size.
-      ## Typically, API functions that return this result code also
-  provides the required size
+      ## Typically, API functions that return this result code also provides the
+      ## required size
     duplicateProperty, ## An attempt has been made to create a property that does
       ## already exist
     duplicateBounds, ## An attempt has been made to create bounds that already
@@ -260,8 +260,8 @@ type
       ## been requested for its value as a TxString
     invalidPropertyName, ## The specified property name is invalid
     propertyNotRemovable, ## An attempt has been made to remove a property that
-      ## is not removable. Typically such properties are the ones
-  backing up data that is required on different interaction objects
+      ## is not removable. Typically such properties are the ones backing up data
+      ## that is required on different interaction objects
     notConnected, ## An attempt was made to perform an operation that requires a
       ## valid connection to the client
     invalidObjectCast, ## A handle for a different type of interaction object
@@ -291,7 +291,6 @@ type
       ## current state of the eye tracker
 
 
-type
   TxInteractionObjectType* {.pure, size: sizeof(cint).} = enum
     ##  Enumeration for all the types of interaction objects that can be exposed
     ## through the API
@@ -311,7 +310,6 @@ type
     internalMessageHeader ## for internal use only
 
 
-type
   TxMessageType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all message types.
     ## The messages type is metadata contained by all packets sent between the
@@ -326,7 +324,6 @@ type
     custom ## Base value for custom message defined by other protocols
 
 
-type
   TxNotificationType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all notification types.
     ##
@@ -336,7 +333,6 @@ type
     diagnosticData
 
 
-type
   TxBehaviorType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all behavior types.
     ##
@@ -354,14 +350,12 @@ type
     gazeDataDiagnostics ## for internal use only
 
 
-type
   TxBoundsType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all bounds types.
     none = txEnumStartValue, ## No bounds
     rectangular ## Rectangular bounds
 
 
-type
   TxActivatableEventType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all activation event types.
     activated = txEnumStartValue, ## The interactor has been activated
@@ -369,7 +363,6 @@ type
       ## focus has changed
 
 
-type
   TxFailedActionType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all action data types.
     activationNoHit = txEnumStartValue, ## An activation action did not hit any
@@ -383,7 +376,6 @@ type
     activationSmallItems ## for internal use only
 
 
-type
   TxFixationDataEventType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all fixation data event types.
     ##
@@ -399,7 +391,6 @@ type
       ## fixation is provided.
 
 
-type
   TxGazePointDataMode* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all gaze point data modes.
     ##
@@ -415,7 +406,6 @@ type
       ## This should be you default choice for gaze point data.
 
 
-type
   TxGazeAwareMode* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all gaze aware modes.
     ##
@@ -431,7 +421,6 @@ type
       ## this mode TX_GAZEAWAREPARAMS needs have the field DelayTime set.
 
 
-type
   TxFixationDataMode* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all fixation data modes.
     ##
@@ -448,7 +437,6 @@ type
       ## circumstances.
 
 
-type
   TxEyeTrackingDeviceStatus* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all eye tracking device statuses.
     initializing = txEnumStartValue, ## The eye tracking device is initializing
@@ -463,7 +451,6 @@ type
       ## Engine can not connect to it
 
 
-type
   TxCommandType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all command types (for internal use only).
     executeAction = txEnumStartValue, 
@@ -482,7 +469,6 @@ type
     launchConfigurationTool
 
 
-type
   TxActionType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all action types.
     ##
@@ -504,7 +490,6 @@ type
     panningToggleHandsFree ## Not yet supported
 
 
-type
   TxPannableEventType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all pannable event types.
     ##
@@ -516,7 +501,6 @@ type
     handsFree ## Not yet supported
 
 
-type
   TxPanDirection* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration flags for all pannable directions.
     ##
@@ -530,7 +514,6 @@ type
     all = (1 shl 4) - 1 ## All pan directions available
 
 
-type 
   TxPanningProfile* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all panning profiles.
     none = txEnumStartValue, ## No panning profile
@@ -545,14 +528,12 @@ type
       ## horizontal panning
 
 
-type
   TxUserPresence* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for convery presence status.
     present = txEnumStartValue, ## A user is present in front of the eye tracker
     notPresent ## A user is not present in front of the eye tracker
 
 
-type
   TxRequestType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all the types of requests that can be exposed through the
     ## API.
@@ -561,13 +542,11 @@ type
       ## other protocols
 
 
-type
   TxMaskType* {.pure, size: sizeof(cint).} = enum ## \
     ##  Enumeration for mask types.
     default = txEnumStartValue ## Default mask type
 
 
-type
   TxInteractionModes* {.size: sizeof(cint).} = enum ## \
     ## Flags for describing engine interaction modes. These influence what
     ## behaviors are being treated and what interaction behavior events are being
@@ -581,13 +560,11 @@ type
       ## are being prioritzed, and approperitate events being generated
 
 
-type
   TxClientMode* {.pure, size: sizeof(cint).} = enum
     agent = txEnumStartValue,
     diagnostics
 
 
-type 
   TxConfigurationTool* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for configuration tools.
     eyexSettings = txEnumStartValue, ## EyeX Settings (always available)
@@ -620,7 +597,6 @@ type
     eyePosition ## For internal use only
 
 
-type
   TxEyeTrackingConfigurationStatus* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for configuration status.
     ##
@@ -663,12 +639,13 @@ type
     ## Boolean return values.
     txFalse = 0,
     txTrue = 1
-  
-  const
-    txEmptyHandle* = 0
-    txInvalidTicket* = 0
-    txCleanupTimeoutDefault* = 500
-    txCleanupTimeoutForceImmediate* = -1
+
+
+const
+  txEmptyHandle* = 0
+  txInvalidTicket* = 0
+  txCleanupTimeoutDefault* = 500
+  txCleanupTimeoutForceImmediate* = -1
 
  
 type
@@ -1061,3 +1038,22 @@ type # Structs
       ## scheduling model
     userParam: TxUserParam ## User parameter which will be passed to the custom
       ## schedule function
+
+
+# Enviroment
+# Context
+# Object
+# Async Data
+# Utils
+# Snapshot
+# Bounds
+# Interactor
+# CommandType
+# Actions
+# Behavior
+# States
+# Notification
+# Query
+# Event
+# Property
+  
