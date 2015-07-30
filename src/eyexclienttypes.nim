@@ -23,6 +23,7 @@ type # Common types
   TxRawPtr* = pointer
   TxThreadId* = cint
 
+
 type
   TxBool* {.size: sizeof(cint).} = enum ## \
     ## Boolean return values.
