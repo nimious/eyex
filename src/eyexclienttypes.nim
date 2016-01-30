@@ -1,4 +1,4 @@
-# *io-tobii* - Nim bindings for the Tobii EyeX eye tracking SDK.
+# *eyex* - Nim bindings for the Tobii EyeX eye tracking SDK.
 #
 # This file is part of the `Nim I/O <http://nimio.us>`_ package collection.
 # See the file LICENSE included in this distribution for licensing details.
@@ -37,7 +37,7 @@ const
   txCleanupTimeoutDefault* = 500
   txCleanupTimeoutForceImmediate* = -1
 
- 
+
 type
   TxEyeComponentOverrideFlags* {.pure, pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all client environment component override flags.
@@ -64,7 +64,7 @@ type
     ## These values are used to notify the application of the current connection
     ## state. To receive these notifications the client needs to subscribe using
     ## `txRegisterConnectionStateChangedHandler <#txRegisterConnectionStateChangedHandler>`_
-    ## and then call `txEnableConnection <#txEnableConnection>`_. 
+    ## and then call `txEnableConnection <#txEnableConnection>`_.
     connected = txEnumStartValue, ## The client is now connected to the client.
     disconnected, ## The client is now disconnected from the client. Unless this
       ## is due to `txDisableConnection <#txDisableConnection>`_ being called the
@@ -78,7 +78,7 @@ type
       ## connected and will not try to reconnect.
 
 
-  TxLogTarget* {.pure, size: sizeof(cint).} = enum ## \ 
+  TxLogTarget* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all log targets.
     ##
     ## When overriding the logging model these flags specify which log targets

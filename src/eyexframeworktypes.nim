@@ -1,4 +1,4 @@
-# *io-tobii* - Nim bindings for the Tobii EyeX eye tracking SDK.
+# *eyex* - Nim bindings for the Tobii EyeX eye tracking SDK.
 #
 # This file is part of the `Nim I/O <http://nimio.us>`_ package collection.
 # See the file LICENSE included in this distribution for licensing details.
@@ -238,19 +238,19 @@ type
 
   TxCommandType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all command types (for internal use only).
-    executeAction = txEnumStartValue, 
+    executeAction = txEnumStartValue,
     setState,
-    getState, 
-    registerStateObserver, 
+    getState,
+    registerStateObserver,
     unregisterStateObserver,
-    commitSnapshot, 
+    commitSnapshot,
     enableBuiltinKeys,
-    disableBuiltinKeys, 
+    disableBuiltinKeys,
     clientConnection,
-    launchEyeTrackingControlPanel, ## Deprecated 
-    registerQueryHandler, 
+    launchEyeTrackingControlPanel, ## Deprecated
+    registerQueryHandler,
     unregisterQueryHandler,
-    diagnosticsRequest, 
+    diagnosticsRequest,
     launchConfigurationTool
 
 
@@ -322,7 +322,7 @@ type
   TxRequestType* {.pure, size: sizeof(cint).} = enum ## \
     ## Enumeration for all the types of requests that can be exposed through the
     ## API.
-    command = txEnumStartValue, ## The request handles a command 
+    command = txEnumStartValue, ## The request handles a command
     custom = txInternalEnumStartValue ## Base value for custom requests defined by
       ## other protocols
 

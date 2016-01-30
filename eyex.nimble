@@ -1,5 +1,5 @@
 [Package]
-name: "io-eyex"
+name: "eyex"
 version: "0.1"
 author: "Gerke Max Preussner <info@nimio.us>"
 description: "Bindings for the Tobii EyeX eye tracking SDK"
